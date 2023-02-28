@@ -1,3 +1,6 @@
+### PHP QR Code Class
+It is an easy-to-access and easy-to-use qr code generator class that makes it easy to create a qr code image with php.
+
 ### Usage:
 ```php
 /* include qr class */
