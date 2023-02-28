@@ -12,7 +12,7 @@ $qrSize = "250";
 /* QR Code Quality [L, M, Q, H] - recommended: M */
 $qrQuality = "M";
 
-$qr = new QR($qrText, "M");
+$qr = new QR($qrText, $qrQuality);
 $qr->return_image($qrSize);
 echo $qr;
 ```
