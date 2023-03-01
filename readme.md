@@ -23,3 +23,33 @@ RewriteRule ^qr.png$ qr-generator.php [QSA, L]
 ```
 
 but you may not need it optionally, my advice is to use it by creating a function in a file.
+
+If you want to revert it as base64:
+### qr.php (function):
+```php
+/* include qr class */
+include("classes/qr-image/qr.php");
+
+function qrImage($text, $size = NULL, $quality = NULL){
+    $size = 250;
+    $quality = "M";
+    $qr = new QR($text, $quality);
+    return $qr->return_image($size);
+}
+```
+
+### qr-image/qr.php:
+find `return_image` function and replace end:
+```php
+ob_start();
+imagepng($im);
+$stringdata = ob_get_contents();
+imagedestroy($im);
+ob_end_clean();
+return base64_encode($stringdata);
+```
+
+usage:
+```php
+echo '<img class="mb-3" src="data:image/png;base64,'.qrImage(gaCode($user['uac']."@".$config['url'])).'" alt="'.$user['uac'].'" style="width:100%;" />';
+```
