@@ -51,5 +51,5 @@ return base64_encode($stringdata);
 
 usage:
 ```php
-echo '<img class="mb-3" src="data:image/png;base64,'.qrImage(gaCode($user['uac']."@".$config['url'])).'" alt="'.$user['uac'].'" style="width:100%;" />';
+echo '<img class="mb-3" src="data:image/png;base64,'.qrImage("string_here").'" alt="barcode" style="width:100%;" />';
 ```
